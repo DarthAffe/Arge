@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using Caliburn.Micro;
 
-namespace Arge.ViewModels
+namespace Arge.Misc
 {
-    public abstract class AbstractViewModel : PropertyChangedBase
+    public abstract class AbstractBindable : PropertyChangedBase
     {
         #region Method
 

@@ -1,0 +1,12 @@
+﻿<resources:CachedResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:resources="clr-namespace:Arge.Resources">
+
+    <Style x:Key="StyleFrameworkElement" TargetType="FrameworkElement">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+    </Style>
+
+</resources:CachedResourceDictionary>

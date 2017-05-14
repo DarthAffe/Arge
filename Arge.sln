@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arge", "Arge\Arge.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D786947A-A8D7-485E-9726-839655841958}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arge.API.Skin", "Arge.API.Skin\Arge.API.Skin.csproj", "{30BAC2D7-4FB2-4464-A573-00DC9F211AFE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,15 +17,8 @@ Global
 		{4509B24A-6B26-41B0-8B62-1C4201317692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4509B24A-6B26-41B0-8B62-1C4201317692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4509B24A-6B26-41B0-8B62-1C4201317692}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30BAC2D7-4FB2-4464-A573-00DC9F211AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30BAC2D7-4FB2-4464-A573-00DC9F211AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30BAC2D7-4FB2-4464-A573-00DC9F211AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30BAC2D7-4FB2-4464-A573-00DC9F211AFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{30BAC2D7-4FB2-4464-A573-00DC9F211AFE} = {D786947A-A8D7-485E-9726-839655841958}
 	EndGlobalSection
 EndGlobal

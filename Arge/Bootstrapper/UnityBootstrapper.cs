@@ -28,8 +28,9 @@ namespace Arge.Bootstrapper
         {
             Container = new UnityContainer();
             RegisterSingleton(Container);
-            RegisterInterface<IWindowManager, WindowManager>();
             RegisterInterface<IEventAggregator, EventAggregator>();
+
+            RegisterTypes();
         }
 
         protected abstract void RegisterTypes();

@@ -1,6 +1,8 @@
-﻿namespace Arge.ViewModels
+﻿using Arge.Misc;
+
+namespace Arge.ViewModels
 {
-    public class ShellViewModel : AbstractViewModel
+    public class ShellViewModel : AbstractBindable
     {
     }
 }

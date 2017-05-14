@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Arge.API.Skin
+namespace Arge.Resources
 {
     public class CachedResourceDictionary : ResourceDictionary
     {
