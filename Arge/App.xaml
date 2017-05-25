@@ -1,14 +1,10 @@
 ﻿<Application x:Class="Arge.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:bootstrapper="clr-namespace:Arge.Bootstrapper"
              xmlns:resources="clr-namespace:Arge.Resources">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <bootstrapper:ArgeBootstrapper x:Key="Bootstrapper" />
-                </ResourceDictionary>
                 <resources:CachedResourceDictionary Source="/Arge;component/Resources/Arge.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

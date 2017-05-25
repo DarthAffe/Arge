@@ -1,7 +1,8 @@
 ﻿<resources:CachedResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     xmlns:resources="clr-namespace:Arge.Resources"
-                                    xmlns:controls="clr-namespace:Arge.Controls">
+                                    xmlns:buttons="clr-namespace:Arge.Controls.Buttons"
+                                    xmlns:window="clr-namespace:Arge.Controls.Window">
 
     <resources:CachedResourceDictionary.MergedDictionaries>
         <resources:CachedResourceDictionary Source="/Arge;component/Styles/BlurredDecorationWindow.xaml" />
@@ -9,8 +10,8 @@
         <resources:CachedResourceDictionary Source="/Arge;component/Styles/ToolTip.xaml" />
     </resources:CachedResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type controls:BlurredDecorationWindow}" BasedOn="{StaticResource StyleBlurredDecorationWindow}" />
-    <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource StyleImageButton}" />
+    <Style TargetType="{x:Type window:BlurredDecorationWindow}" BasedOn="{StaticResource StyleBlurredDecorationWindow}" />
+    <Style TargetType="{x:Type buttons:ImageButton}" BasedOn="{StaticResource StyleImageButton}" />
     <Style TargetType="ToolTip" BasedOn="{StaticResource StyleToolTip}" />
 
 </resources:CachedResourceDictionary>

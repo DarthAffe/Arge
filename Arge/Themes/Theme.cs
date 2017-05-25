@@ -1,8 +1,8 @@
-﻿using Arge.Misc;
+﻿using ReactiveUI;
 
 namespace Arge.Themes
 {
-    public class Theme : AbstractBindable
+    public class Theme : ReactiveObject
     {
         #region Properties & Fields
 

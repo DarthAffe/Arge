@@ -1,11 +1,20 @@
-﻿<UserControl x:Class="Arge.Views.ShellView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModels="clr-namespace:Arge.ViewModels"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=viewModels:ShellViewModel, IsDesignTimeCreatable=true}">
-
+﻿<views:ShellViewBase x:Class="Arge.Views.ShellView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:viewModels="clr-namespace:Arge.ViewModels"
+                     xmlns:views="clr-namespace:Arge.Views"
+                     mc:Ignorable="d"
+                     d:DataContext="{d:DesignInstance Type=viewModels:ShellViewModel, IsDesignTimeCreatable=true}">
+    <Grid>
+        <ContentControl x:Name="TargetNavigation" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="72" Margin="80,-72,72,0" />
+        <DockPanel LastChildFill="True">
+            <ContentControl x:Name="TargetLayers" DockPanel.Dock="Left" />
+            <ContentControl x:Name="TargetSelection" DockPanel.Dock="Right" />
+            <ContentControl x:Name="TargetActions" DockPanel.Dock="Bottom" />
+            <ContentControl x:Name="TargetSurface" />
+        </DockPanel>
+    </Grid>
+</views:ShellViewBase>
     
-</UserControl>

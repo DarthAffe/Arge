@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using Arge.Configuration;
+using Arge.Controls.Window;
 using Arge.Themes;
 using Arge.ViewModels;
-using Caliburn.Micro;
+using Arge.Views;
 using Microsoft.Practices.Unity;
+using ReactiveUI;
 
 namespace Arge.Bootstrapper
 {
@@ -14,23 +18,40 @@ namespace Arge.Bootstrapper
 
         protected override void RegisterTypes()
         {
-            RegisterInterface<IWindowManager, ArgeWindowManager>();
+            RegisterServices();
+            RegisterViews();
+        }
 
+        private void RegisterServices()
+        {
             RegisterSingleton<ThemeManager>();
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        private void RegisterViews()
+        {
+            RegisterView<ShellView, ShellViewModel>();
+            RegisterView<NavigationView, NavigationViewModel>();
+        }
+
+        protected override void InitializeHandlers()
+        {
+        }
+
+        protected override void Start()
         {
             Config.Instance.Load();
             Container.Resolve<ThemeManager>().LoadTheme(Config.Instance[ConfigEntryType.Theme]);
 
-            Dictionary<string, object> settings = new Dictionary<string, object>
-                           {
-                               { "Title", "Arge" },
-                               { "Width"  , 1280 },
-                               { "Height" , 720  }
-                           };
-            DisplayRootViewFor<ShellViewModel>(settings);
+            BlurredDecorationWindow window = new BlurredDecorationWindow
+            {
+                Width = 1280,
+                Height = 720,
+                Icon = new BitmapImage(new Uri("pack://application:,,,/Arge;component/Resources/ArgeBee.ico")),
+                IconCommand = ReactiveCommand.Create(() => Process.Start("http://arge.be")),
+                Content = Container.Resolve<ShellView>()
+            };
+            Application.Current.MainWindow = window;
+            window.Show();
         }
 
         #endregion

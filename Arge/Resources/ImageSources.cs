@@ -4,11 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Media;
 using Arge.Attributes;
-using Arge.Misc;
+using ReactiveUI;
 
 namespace Arge.Resources
 {
-    public class ImageSources : AbstractBindable
+    public class ImageSources : ReactiveObject
     {
         #region Properties & Fields
 
@@ -47,7 +47,8 @@ namespace Arge.Resources
                 if (string.IsNullOrWhiteSpace(fileName)) continue;
 
                 propertyInfo.SetValue(this, ConvertToImageSource(files.FirstOrDefault(x => string.Equals(Path.GetFileNameWithoutExtension(x), fileName, StringComparison.OrdinalIgnoreCase))));
-                NotifyOfPropertyChange(propertyInfo.Name);
+                // ReSharper disable once ExplicitCallerInfoArgument - impossible!
+                this.RaisePropertyChanged(propertyInfo.Name);
             }
         }
 

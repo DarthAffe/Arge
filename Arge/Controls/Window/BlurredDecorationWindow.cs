@@ -3,14 +3,14 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Arge.Controls
+namespace Arge.Controls.Window
 {
     [TemplatePart(Name = "PART_Decoration", Type = typeof(FrameworkElement))]
     [TemplatePart(Name = "PART_Content", Type = typeof(FrameworkElement))]
     [TemplatePart(Name = "PART_CloseButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_MinimizeButton", Type = typeof(Button))]
     [TemplatePart(Name = "PART_IconButton", Type = typeof(Button))]
-    public class BlurredDecorationWindow : Window
+    public class BlurredDecorationWindow : System.Windows.Window
     {
         #region DependencyProperties
         // ReSharper disable InconsistentNaming

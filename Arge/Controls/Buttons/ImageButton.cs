@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Arge.Controls
+namespace Arge.Controls.Buttons
 {
     public class ImageButton : Button
     {

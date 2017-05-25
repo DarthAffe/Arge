@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using Caliburn.Micro;
+using System.Windows;
 using Microsoft.Practices.Unity;
+using ReactiveUI;
+using Splat;
 
 namespace Arge.Bootstrapper
 {
-    public abstract class UnityBootstrapper : BootstrapperBase
+    public abstract class UnityBootstrapper
     {
         #region Properties & Fields
 
@@ -13,52 +14,53 @@ namespace Arge.Bootstrapper
 
         #endregion
 
-        #region Constructors
-
-        protected UnityBootstrapper()
-        {
-            Initialize();
-        }
-
-        #endregion
-
         #region Methods
 
-        protected override void Configure()
+        public virtual void OnStartup(StartupEventArgs e)
+        {
+            Configure();
+            RegisterTypes();
+            InitializeHandlers();
+            Start();
+        }
+
+        public virtual void OnExit(ExitEventArgs e)
+        {
+        }
+
+        protected virtual void Configure()
         {
             Container = new UnityContainer();
             RegisterSingleton(Container);
-            RegisterInterface<IEventAggregator, EventAggregator>();
 
-            RegisterTypes();
+            Locator.Current = new UnityDependencyResolver(Container);
+            NavigationManager.Initialize(Container);
         }
 
         protected abstract void RegisterTypes();
 
-        protected override object GetInstance(Type service, string key)
-        {
-            return key != null ? Container.Resolve(service, key) : Container.Resolve(service);
-        }
+        protected abstract void InitializeHandlers();
 
-        protected override IEnumerable<object> GetAllInstances(Type service)
-        {
-            return Container.ResolveAll(service);
-        }
-
-        protected override void BuildUp(object instance)
-        {
-            instance = Container.BuildUp(instance);
-            base.BuildUp(instance);
-        }
+        protected abstract void Start();
 
         #region Container-Registration
 
-        protected void RegisterInterface<TInterface, TImplementation>(bool registerTypeToo = true, bool registerAsSingleton = true, string uniqueName = null)
+        protected void RegisterService<TInterface, TImplementation>(bool registerTypeToo = true, bool registerAsSingleton = true, string uniqueName = null)
             where TImplementation : TInterface
         {
             RegisterTypeIfMissing(typeof(TInterface), typeof(TImplementation), registerAsSingleton, uniqueName);
             if (registerTypeToo)
                 RegisterTypeIfMissing(typeof(TImplementation), typeof(TImplementation), registerAsSingleton, uniqueName);
+        }
+
+        protected void RegisterView<TView, TViewModel>()
+            where TView : IViewFor<TViewModel>
+            where TViewModel : class, IReactiveObject
+        {
+            RegisterTypeIfMissing(typeof(TView), typeof(TView), false);
+            RegisterTypeIfMissing(typeof(TViewModel), typeof(TViewModel), false);
+
+            NavigationManager.Instance.RegisterViewTypes(typeof(TView), typeof(TViewModel));
         }
 
         protected void RegisterSingleton<T>()

@@ -1,14 +1,24 @@
-﻿using System.Windows.Controls;
+﻿using Arge.ViewModels;
+using ReactiveUI;
 
 namespace Arge.Views
 {
-    public partial class ShellView : UserControl
+    public class ShellViewBase : AbstractView<ShellViewModel> { }
+
+    public partial class ShellView : ShellViewBase
     {
         #region Constructors
 
-        public ShellView()
+        public ShellView(ShellViewModel viewModel)
         {
             InitializeComponent();
+
+            this.ViewModel = viewModel;
+
+            this.WhenActivated(d =>
+            {
+                d(this.OneWayBind(ViewModel, vm => vm.NavigationManager.Navigation, v => v.TargetNavigation.Content));
+            });
         }
 
         #endregion
