@@ -15,7 +15,7 @@ namespace Arge.ViewModels
 
         #region Constructors
 
-        public AbstractViewModel(string urlPathSegment, IScreen screen)
+        protected AbstractViewModel(string urlPathSegment, IScreen screen)
         {
             this.UrlPathSegment = urlPathSegment;
             this.HostScreen = screen;

@@ -110,7 +110,6 @@
     <Compile Include="Configuration\ConfigEntryType.cs" />
     <Compile Include="Controls\Window\BlurredDecorationWindow.cs" />
     <Compile Include="Controls\Buttons\ImageButton.cs" />
-    <Compile Include="Enums\NavigationTargets.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Resources\CachedResourceDictionary.cs" />
     <Compile Include="Resources\Fonts.cs" />
@@ -160,7 +159,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Converter\Converter.xaml">
       <Generator>MSBuild:Compile</Generator>
