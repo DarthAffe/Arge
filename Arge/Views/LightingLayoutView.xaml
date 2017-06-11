@@ -1,0 +1,12 @@
+﻿<views:SettingsLayoutViewBase x:Class="Arge.Views.SettingsLayoutView"
+                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                              xmlns:viewModels="clr-namespace:Arge.ViewModels"
+                              xmlns:views="clr-namespace:Arge.Views"
+                              mc:Ignorable="d" 
+                              d:DataContext="{d:DesignInstance Type=viewModels:SettingsLayoutViewModel, IsDesignTimeCreatable=true}"
+                              d:DesignWidth="1278" d:DesignHeight="639">
+
+</views:SettingsLayoutViewBase>

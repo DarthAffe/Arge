@@ -8,12 +8,11 @@ using ReactiveUI;
 
 namespace Arge.Resources
 {
-    public class ImageSources : ReactiveObject
+    public sealed class ImageSources : ReactiveObject
     {
         #region Properties & Fields
 
-        private static ImageSources _instace;
-        public static ImageSources Instance => _instace ?? (_instace = new ImageSources());
+        public static ImageSources Instance { get; } = new ImageSources();
 
         private readonly ImageSourceConverter _imageSourceConverter = new ImageSourceConverter();
 
@@ -41,7 +40,7 @@ namespace Arge.Resources
         {
             string[] files = Directory.GetFiles(baseDirectory);
 
-            foreach (PropertyInfo propertyInfo in typeof(ImageSources).GetProperties())
+            foreach (PropertyInfo propertyInfo in GetType().GetProperties())
             {
                 string fileName = propertyInfo.GetCustomAttribute<FileNameAttribute>()?.FileName;
                 if (string.IsNullOrWhiteSpace(fileName)) continue;
@@ -52,10 +51,7 @@ namespace Arge.Resources
             }
         }
 
-        private ImageSource ConvertToImageSource(string path)
-        {
-            return string.IsNullOrWhiteSpace(path) ? null : _imageSourceConverter.ConvertFromString(path) as ImageSource;
-        }
+        private ImageSource ConvertToImageSource(string path) => string.IsNullOrWhiteSpace(path) ? null : _imageSourceConverter.ConvertFromString(path) as ImageSource;
 
         #endregion
     }

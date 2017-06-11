@@ -102,8 +102,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Attached\ListBoxExtension.cs" />
     <Compile Include="Attributes\FileNameAttribute.cs" />
-    <Compile Include="Bootstrapper\NavigationManager.cs" />
     <Compile Include="Bootstrapper\UnityBootstrapper.cs" />
     <Compile Include="Bootstrapper\UnityDependencyResolver.cs" />
     <Compile Include="Configuration\Config.cs" />
@@ -113,15 +113,20 @@
     <Compile Include="Enums\NavigationTargets.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Resources\CachedResourceDictionary.cs" />
+    <Compile Include="Resources\Fonts.cs" />
     <Compile Include="Resources\ImageSources.cs" />
     <Compile Include="Themes\Theme.cs" />
     <Compile Include="Themes\ThemeManager.cs" />
     <Compile Include="ViewModels\AbstractViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\SettingsLayoutViewModel.cs" />
+    <Compile Include="ViewModels\LightingLayoutViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AbstractView.cs" />
-    <Compile Include="Views\NavigationView.xaml.cs">
-      <DependentUpon>NavigationView.xaml</DependentUpon>
+    <Compile Include="Views\SettingsLayoutView.xaml.cs">
+      <DependentUpon>SettingsLayoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LightingLayoutView.xaml.cs">
+      <DependentUpon>LightingLayoutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -155,9 +160,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AttachedProperties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Converter\Converter.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +171,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\BlurredDecorationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Navigation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -183,11 +190,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <None Include="Themes\Default\default.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\Default\navigation.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Themes\Default\Theme.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Page Include="Views\NavigationView.xaml">
+    <Page Include="Views\SettingsLayoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LightingLayoutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -34,6 +34,8 @@
         <Setter Property="MinWidth" Value="256" />
         <Setter Property="MinHeight" Value="144" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeDefault}" />
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static resources:Fonts.Instance}, Path=Default}" />
 
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>

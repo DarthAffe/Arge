@@ -1,9 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Media.Imaging;
+﻿using System.Windows;
 using Arge.Configuration;
-using Arge.Controls.Window;
 using Arge.Themes;
 using Arge.ViewModels;
 using Arge.Views;
@@ -30,7 +26,8 @@ namespace Arge.Bootstrapper
         private void RegisterViews()
         {
             RegisterView<ShellView, ShellViewModel>();
-            RegisterView<NavigationView, NavigationViewModel>();
+            RegisterView<LightingLayoutView, LightingLayoutViewModel>();
+            RegisterView<SettingsLayoutView, SettingsLayoutViewModel>();
         }
 
         protected override void InitializeHandlers()
@@ -42,14 +39,8 @@ namespace Arge.Bootstrapper
             Config.Instance.Load();
             Container.Resolve<ThemeManager>().LoadTheme(Config.Instance[ConfigEntryType.Theme]);
 
-            BlurredDecorationWindow window = new BlurredDecorationWindow
-            {
-                Width = 1280,
-                Height = 720,
-                Icon = new BitmapImage(new Uri("pack://application:,,,/Arge;component/Resources/ArgeBee.ico")),
-                IconCommand = ReactiveCommand.Create(() => Process.Start("http://arge.be")),
-                Content = Container.Resolve<ShellView>()
-            };
+            ShellView window = Container.Resolve<ShellView>();
+            RegisterSingleton(typeof(IScreen), window.ViewModel);
             Application.Current.MainWindow = window;
             window.Show();
         }

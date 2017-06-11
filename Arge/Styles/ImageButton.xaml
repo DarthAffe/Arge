@@ -3,7 +3,12 @@
                                     xmlns:resources="clr-namespace:Arge.Resources"
                                     xmlns:buttons="clr-namespace:Arge.Controls.Buttons">
 
+    <resources:CachedResourceDictionary.MergedDictionaries>
+        <resources:CachedResourceDictionary Source="/Arge;component/Styles/FrameworkElement.xaml" />
+    </resources:CachedResourceDictionary.MergedDictionaries>
+
     <Style x:Key="StyleImageButton"
+           BasedOn="{StaticResource StyleFrameworkElement}"
            TargetType="{x:Type buttons:ImageButton}">
         <Setter Property="Padding" Value="0" />
 
@@ -62,6 +67,7 @@
     </Style>
 
     <Style x:Key="StyleImageButtonWithOpacity" 
+           BasedOn="{StaticResource StyleFrameworkElement}"
            TargetType="{x:Type buttons:ImageButton}">
         <Setter Property="Opacity" Value="0.66" />
         <Setter Property="Padding" Value="0" />
@@ -105,6 +111,6 @@
         <Setter Property="Margin" Value="0,16" />
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
-    
+
 </resources:CachedResourceDictionary>
     

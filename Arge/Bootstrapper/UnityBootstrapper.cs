@@ -34,7 +34,6 @@ namespace Arge.Bootstrapper
             RegisterSingleton(Container);
 
             Locator.Current = new UnityDependencyResolver(Container);
-            NavigationManager.Initialize(Container);
         }
 
         protected abstract void RegisterTypes();
@@ -45,12 +44,10 @@ namespace Arge.Bootstrapper
 
         #region Container-Registration
 
-        protected void RegisterService<TInterface, TImplementation>(bool registerTypeToo = true, bool registerAsSingleton = true, string uniqueName = null)
+        protected void RegisterService<TInterface, TImplementation>(bool registerAsSingleton = true, string uniqueName = null)
             where TImplementation : TInterface
         {
             RegisterTypeIfMissing(typeof(TInterface), typeof(TImplementation), registerAsSingleton, uniqueName);
-            if (registerTypeToo)
-                RegisterTypeIfMissing(typeof(TImplementation), typeof(TImplementation), registerAsSingleton, uniqueName);
         }
 
         protected void RegisterView<TView, TViewModel>()
@@ -59,8 +56,6 @@ namespace Arge.Bootstrapper
         {
             RegisterTypeIfMissing(typeof(TView), typeof(TView), false);
             RegisterTypeIfMissing(typeof(TViewModel), typeof(TViewModel), false);
-
-            NavigationManager.Instance.RegisterViewTypes(typeof(TView), typeof(TViewModel));
         }
 
         protected void RegisterSingleton<T>()
@@ -70,7 +65,12 @@ namespace Arge.Bootstrapper
 
         protected void RegisterSingleton<T>(T instance)
         {
-            Container.RegisterInstance(typeof(T), instance, new ContainerControlledLifetimeManager());
+            RegisterSingleton(typeof(T), instance);
+        }
+
+        protected void RegisterSingleton(Type t, object instance)
+        {
+            Container.RegisterInstance(t, instance, new ContainerControlledLifetimeManager());
         }
 
         protected void RegisterTypeIfMissing(Type fromType, Type toType, bool registerAsSingleton, string uniqueName = null)

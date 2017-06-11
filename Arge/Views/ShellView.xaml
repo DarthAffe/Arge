@@ -5,16 +5,28 @@
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:viewModels="clr-namespace:Arge.ViewModels"
                      xmlns:views="clr-namespace:Arge.Views"
+                     xmlns:reactiveUi="http://reactiveui.net"
+                     xmlns:resources="clr-namespace:Arge.Resources"
+                     xmlns:attached="clr-namespace:Arge.Attached"
                      mc:Ignorable="d"
-                     d:DataContext="{d:DesignInstance Type=viewModels:ShellViewModel, IsDesignTimeCreatable=true}">
+                     d:DataContext="{d:DesignInstance Type=viewModels:ShellViewModel, IsDesignTimeCreatable=true}"
+                     Width="1280" Height="720"
+                     Icon="pack://application:,,,/Arge;component/Resources/ArgeBee.ico">
+
+    <views:ShellViewBase.Resources>
+        <resources:CachedResourceDictionary Source="/Arge;component/Styles/Navigation.xaml" />
+    </views:ShellViewBase.Resources>
+
     <Grid>
-        <ContentControl x:Name="TargetNavigation" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="72" Margin="80,-72,72,0" />
-        <DockPanel LastChildFill="True">
-            <ContentControl x:Name="TargetLayers" DockPanel.Dock="Left" />
-            <ContentControl x:Name="TargetSelection" DockPanel.Dock="Right" />
-            <ContentControl x:Name="TargetActions" DockPanel.Dock="Bottom" />
-            <ContentControl x:Name="TargetSurface" />
-        </DockPanel>
+        <ListBox x:Name="ListBoxNavigation" VerticalAlignment="Top" Height="72" Margin="80,-72,72,0"
+                 attached:ListBoxExtension.AlwaysSelectItem="True"
+                 SelectedIndex="0"
+                 Style="{StaticResource StyleNavigationListBox}" />
+
+        <reactiveUi:RoutedViewHost HorizontalContentAlignment="Stretch"
+                                   VerticalContentAlignment="Stretch"
+                                   Router="{Binding Router}" />
+
     </Grid>
+
 </views:ShellViewBase>
-    

@@ -2,7 +2,8 @@
                                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     xmlns:resources="clr-namespace:Arge.Resources"
                                     xmlns:buttons="clr-namespace:Arge.Controls.Buttons"
-                                    xmlns:window="clr-namespace:Arge.Controls.Window">
+                                    xmlns:window="clr-namespace:Arge.Controls.Window"
+                                    xmlns:views="clr-namespace:Arge.Views">
 
     <resources:CachedResourceDictionary.MergedDictionaries>
         <resources:CachedResourceDictionary Source="/Arge;component/Styles/BlurredDecorationWindow.xaml" />
@@ -11,6 +12,7 @@
     </resources:CachedResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type window:BlurredDecorationWindow}" BasedOn="{StaticResource StyleBlurredDecorationWindow}" />
+    <Style TargetType="{x:Type views:ShellView}" BasedOn="{StaticResource StyleBlurredDecorationWindow}" />
     <Style TargetType="{x:Type buttons:ImageButton}" BasedOn="{StaticResource StyleImageButton}" />
     <Style TargetType="ToolTip" BasedOn="{StaticResource StyleToolTip}" />
 

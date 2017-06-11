@@ -67,6 +67,7 @@ namespace Arge.Themes
             CurrentTheme = theme;
 
             ImageSources.Instance.Update(CurrentThemeFolder);
+            Fonts.Instance.Update(CurrentThemeFolder);
         }
 
         public void CheckAvailableThemes()

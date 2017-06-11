@@ -1,10 +1,19 @@
 ﻿<resources:CachedResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     xmlns:resources="clr-namespace:Arge.Resources">
+    
+    <resources:CachedResourceDictionary.MergedDictionaries>
+        <resources:CachedResourceDictionary Source="/Arge;component/Styles/FrameworkElement.xaml" />
+    </resources:CachedResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="StyleToolTip" TargetType="ToolTip">
+    <Style x:Key="StyleToolTip" 
+           BasedOn="{StaticResource StyleFrameworkElement}"
+           TargetType="ToolTip">
         <Style.Setters>
             <Setter Property="Foreground" Value="{DynamicResource BrushTooltipForeground}" />
+            <Setter Property="FontSize" Value="{DynamicResource FontSizeTooltip}" />
+            <Setter Property="FontFamily" Value="{Binding Source={x:Static resources:Fonts.Instance}, Path=Tooltip}" />
+            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToolTip">
